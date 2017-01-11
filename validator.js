@@ -28,7 +28,7 @@ var validator = function (data) {
   if (feedbackFlag < 3) {
     return false;
   }
-  console.log('jajjj');
+  console.log('vaaaliiiid!!!!!!');
   return true;
 }
 

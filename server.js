@@ -15,7 +15,7 @@ const urlencodedParser = bodyParser.urlencoded({
 
 // ***********set up DB connection *************
 
-var connection = mysql.createConnection({
+const connection = mysql.createConnection({
   host: "localhost",
   user: "root",
   password: "alma",
@@ -35,7 +35,7 @@ connection.connect(function(error){
 
 app.post('/exam', function (req, res) {
   if (!validator(req.body)) {
-    var errorMessage = {
+    let errorMessage = {
         "status": "error",
         "message": "thank you"
     };
@@ -49,13 +49,12 @@ app.post('/exam', function (req, res) {
         connection.end();
         return;
       }
-      console.log(rows);
-      // var project = rows.project_name.map(function (item) {
-      //   return item;
-      // });
-      var responseData = {
+      let projects = rows.map(function (item) {
+        return item.project_name;
+      });
+      let responseData = {
             "status": "ok",
-            "projects": rows
+            "projects": projects
       };
       res.status(200).json(responseData);
     });

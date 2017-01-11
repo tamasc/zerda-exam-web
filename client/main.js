@@ -13,9 +13,9 @@ var app = (function () {
         "email": document.getElementById('email').value
       };
       ajax.post(data, view.renderList);
-      // document.getElementById('questionnaire').value = '';
-      // document.getElementById('points').value = '';
-      // document.getElementById('email').value = '';
+      document.getElementById('questionnaire').value = '';
+      document.getElementById('points').value = '';
+      document.getElementById('email').value = '';
     });
   };
 

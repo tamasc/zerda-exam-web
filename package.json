@@ -1,0 +1,24 @@
+{
+  "name": "zerda-exam-web",
+  "version": "1.0.0",
+  "description": "- Fork this repository under your own account\r  - Clone the forked repository to your computer\r  - Commit your progress frequently and with descriptive commit messages\r  - All your answers and solutions should go in this repository",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tamasc/zerda-exam-web.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tamasc/zerda-exam-web.git/issues"
+  },
+  "homepage": "https://github.com/tamasc/zerda-exam-web.git#readme",
+  "devDependencies": {
+    "eslint": "^3.13.1",
+    "eslint-config-airbnb-base": "^11.0.1",
+    "eslint-plugin-import": "^2.2.0"
+  }
+}

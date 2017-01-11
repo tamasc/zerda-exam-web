@@ -3,14 +3,14 @@ var app = (function () {
 
   var fire = function () {
     addEvents();
-  }
+  };
 
   var addEvents = function () {
     button.addEventListener('click', function () {
       var data = {
         "feedback": document.getElementById('questionnaire').value,
         "scale": document.getElementById('points').value,
-        "email": document.getElementById('email').value
+        "email": document.getElementById('email').value,
       };
       ajax.post(data, view.renderList);
       document.getElementById('questionnaire').value = '';
@@ -22,7 +22,6 @@ var app = (function () {
   return {
     fire: fire,
   };
-
 })();
 
 var ajax = (function () {
@@ -35,9 +34,9 @@ var ajax = (function () {
     xhr.send(dataToSend);
     xhr.onreadystatechange = function (rsp) {
       if (xhr.readyState === XMLHttpRequest.DONE) {
-       data = JSON.parse(xhr.response);
-       view.statusBar.innerText = '';
-       callback(data);
+        data = JSON.parse(xhr.response);
+        view.statusBar.innerText = '';
+        callback(data);
       }
     };
   };
@@ -58,13 +57,12 @@ var view = (function () {
   var list = document.getElementById('projects');
 
   var renderList = function (data) {
-    console.log(data);
-    if (data.status === "error") {
+    if (data.status === 'error') {
       statusBar.innerText = data.status + ' but: ' + data.message;
       return;
     }
     list.innerHTML = '';
-    data.projects.forEach(function (item, index) {
+    data.projects.forEach(function (item) {
       var listItem = document.createElement('li');
       listItem.innerText = item;
       list.appendChild(listItem);
@@ -74,7 +72,7 @@ var view = (function () {
   return {
     statusBar: statusBar,
     renderList: renderList,
-  }
+  };
 })();
 
 app.fire();

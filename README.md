@@ -36,7 +36,7 @@
     "email": "lobab@greenfox.academy"
   }
   ```
-  - the frontend should display the server response in a list     !!!!!!!!!!!!!
+  - the frontend should display the server response in a list
   - the frontend should hide the 'loading' message when the response arrives
 
 ### 3. backend: node, express

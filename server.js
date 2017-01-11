@@ -6,9 +6,9 @@ const mysql = require('mysql');
 const validator = require('./validator.js');
 
 const app = express();
-app.use(bodyParser.json());
 app.use(express.static('client'));
 
+app.use(bodyParser.json());
 const urlencodedParser = bodyParser.urlencoded({
   extended: false,
 });
@@ -16,14 +16,14 @@ const urlencodedParser = bodyParser.urlencoded({
 // ***********set up DB connection *************
 
 const connection = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "alma",
-  database: "secretprojects",
+  host: 'localhost',
+  user: 'root',
+  password: 'alma',
+  database: 'secretprojects',
 });
 
-connection.connect(function(error){
-  if(error){
+connection.connect(function (error) {
+  if (error) {
     console.log('error on connection to database', error.toString());
     return;
   }
@@ -35,7 +35,7 @@ connection.connect(function(error){
 
 app.post('/exam', function (req, res) {
   if (!validator(req.body)) {
-    let errorMessage = {
+    const errorMessage = {
         "status": "error",
         "message": "thank you"
     };

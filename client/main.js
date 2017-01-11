@@ -26,6 +26,8 @@ var app = (function () {
 
 var ajax = (function () {
   var open = function (request, url, dataToSend, callback) {
+    view.list.innerHTML = '';
+    view.statusBar.classList.remove('error');
     view.statusBar.innerText = 'Loading...';
     var data;
     var xhr = new XMLHttpRequest();
@@ -58,7 +60,8 @@ var view = (function () {
 
   var renderList = function (data) {
     if (data.status === 'error') {
-      statusBar.innerText = data.status + ' but: ' + data.message;
+      statusBar.classList.add('error');
+      statusBar.innerText = data.status + ' but ' + data.message;
       return;
     }
     list.innerHTML = '';
@@ -71,6 +74,7 @@ var view = (function () {
 
   return {
     statusBar: statusBar,
+    list: list,
     renderList: renderList,
   };
 })();

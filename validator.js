@@ -7,7 +7,7 @@ var validator = function (data) {
   var email = data.email.split('');
   var scale = parseInt(data.scale);
   var feedback = data.feedback.split(' ');
-  if (scale < 0) {
+  if (scale < 10) {
     return false;
   }
   var emailFlag = 0;
@@ -28,7 +28,6 @@ var validator = function (data) {
   if (feedbackFlag < 3) {
     return false;
   }
-  console.log('vaaaliiiid!!!!!!');
   return true;
 }
 

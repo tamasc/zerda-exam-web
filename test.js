@@ -3,12 +3,7 @@
 const test = require('tape');
 const validator = require('./validator.js');
 
-test('true', function (t) {
-  t.equal(1, 1);
-  t.end();
-});
-
-test('validator accepts valid feedback, scale and email', function (t) {
+test('validator accepts valid positive feedback, scale and email', function (t) {
   let data = {
     "feedback": "amazing awesome blithesome",
     "scale": "10",
@@ -48,6 +43,16 @@ test('validator rejects valid email, a scale of 9 and less positive feedback', f
   t.end();
 });
 
+test('validator rejects valid email, a scale of 9 and a positive feedback', function (t) {
+  let data = {
+    "feedback": "amazing awesome smart",
+    "scale": "9",
+    "email": "aladar@citromail.hu",
+  };
+  t.equal(validator(data), false);
+  t.end();
+});
+
 test('validator rejects invalid email, a scale of 9 and positive feedback', function (t) {
   let data = {
     "feedback": "amazing awesome great",
@@ -72,6 +77,16 @@ test('validator rejects valid email, a scale of 9 and a random (non-positive) fe
   let data = {
     "feedback": "A karfiol leves nem tul finom, bezzeg a spenot...",
     "scale": "9",
+    "email": "aladar@citromail.hu",
+  };
+  t.equal(validator(data), false);
+  t.end();
+});
+
+test('validator rejects valid email, a scale of 10 and a random (non-positive) feedback', function (t) {
+  let data = {
+    "feedback": "A karfiol leves nem tul finom, bezzeg a spenot...",
+    "scale": "10",
     "email": "aladar@citromail.hu",
   };
   t.equal(validator(data), false);
